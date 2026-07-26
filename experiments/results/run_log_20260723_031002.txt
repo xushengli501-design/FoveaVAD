@@ -1,0 +1,113 @@
+[InternVLLowLevel] Loading InternVL2-8B on cuda (torch.bfloat16)...
+2026-07-23 03:10:13.956562: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:477] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1784747413.991643 1233833 cuda_dnn.cc:8310] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1784747413.998999 1233833 cuda_blas.cc:1418] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-07-23 03:10:14.038995: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+/opt/anaconda3/lib/python3.12/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+FlashAttention2 is not installed.
+InternLM2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly overwritten. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Warning: Flash attention is not available, using eager attention instead.
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:00<00:00,  7.06it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 18.45it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 16.41it/s]
+[InternVLLowLevel] LLM layers=32, Stage1=0..23 (24L), Stage2=24..31 (8L)
+[PhaseEncoder] Loading ViT-B/16 from /sdb/data_public/llms/vit-base-patch16-224-in21k...
+[PhaseEncoder] Ready: grid=14×14, dim=768
+[PhaseEncoder] Loading ViT-B/16 from /sdb/data_public/llms/vit-base-patch16-224-in21k...
+[PhaseEncoder] Ready: grid=14×14, dim=768
+Videos: 28, stride=30, max_per_video=5
+  Abuse028_x264
+  Abuse030_x264
+  Arrest001_x264
+  Arrest007_x264
+  Arson007_x264
+  Arson009_x264
+  Assault006_x264
+  Assault010_x264
+  Burglary005_x264
+  Burglary017_x264
+  Explosion002_x264
+  Explosion004_x264
+  Fighting003_x264
+  Fighting018_x264
+  RoadAccidents001_x264
+  RoadAccidents002_x264
+  Robbery048_x264
+  Robbery050_x264
+  Shooting002_x264
+  Shooting004_x264
+  Shoplifting001_x264
+  Shoplifting004_x264
+  Stealing019_x264
+  Stealing036_x264
+  Vandalism007_x264
+  Vandalism015_x264
+  Normal_Videos_003_x264
+  Normal_Videos_006_x264
+
+============================================================
+EXP 1: Box Methods (phase/center/random/full/tok_norm)
+============================================================
+  [Abuse028_x264] 0w (457s)
+  [Abuse030_x264] 0w (947s)
+  [Arrest001_x264] 0w (1577s)
+  [Arrest007_x264] 0w (2404s)
+  [Arson007_x264] 0w (3921s)
+  [Arson009_x264] 0w (4092s)
+  [Assault006_x264] 0w (6070s)
+  [Assault010_x264] 0w (9947s)
+  [Burglary005_x264] 0w (11802s)
+  [Burglary017_x264] 0w (12304s)
+  [Explosion002_x264] 0w (13281s)
+  [Explosion004_x264] 0w (13742s)
+  [Fighting003_x264] 0w (14474s)
+  [Fighting018_x264] 0w (14811s)
+  [RoadAccidents001_x264] 0w (15135s)
+  [RoadAccidents002_x264] 0w (15214s)
+  [Robbery048_x264] 0w (15544s)
+  [Robbery050_x264] 0w (15946s)
+  [Shooting002_x264] 0w (16230s)
+  [Shooting004_x264] 0w (16656s)
+  [Shoplifting001_x264] 0w (17669s)
+  [Shoplifting004_x264] 0w (19264s)
+  [Stealing019_x264] 0w (20440s)
+  [Stealing036_x264] 0w (21042s)
+  [Vandalism007_x264] 0w (21316s)
+  [Vandalism015_x264] 0w (22012s)
+  [Normal_Videos_003_x264] 0w (22705s)
+  [Normal_Videos_006_x264] 0w (22809s)
+
+--- Results ---
+  phase      vB=0.3217 Comb=0.3432 Δ=+0.0214
+  center     vB=0.3217 Comb=0.3544 Δ=+0.0327
+  random     vB=0.3217 Comb=0.3455 Δ=+0.0237
+  full       vB=0.3217 Comb=0.3562 Δ=+0.0344
+
+--- Ranking ---
+  1. full       AUC=0.3562
+  2. center     AUC=0.3544
+  3. random     AUC=0.3455
+  4. phase      AUC=0.3432
+
+============================================================
+EXP 2: Target Size Analysis
+============================================================
+
+--- Per-Category ---
+  📐 Explosion          vB=0.5625 Comb=0.5000 Δ=-0.0625
+  📐 Fighting           vB=0.4062 Comb=0.4062 Δ=+0.0000
+  large: vB=0.5547 Comb=0.4219 Δ=-0.1328
+
+============================================================
+EXP 3: Component Ablation
+============================================================
+  [Abuse028_x264] 0w (97s)
+  [Abuse030_x264] 0w (198s)
+  [Arrest001_x264] 0w (355s)
+  [Arrest007_x264] 0w (570s)
+  [Arson007_x264] 0w (1030s)
+  [Arson009_x264] 0w (1085s)
